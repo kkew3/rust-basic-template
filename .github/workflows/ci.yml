@@ -21,7 +21,7 @@ jobs:
         run: cargo install taplo-cli --locked
 
       - name: Report versions
-        uses: |
+        run: |
           cargo --version
           rustc --version
           taplo --version
