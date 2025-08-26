@@ -18,7 +18,7 @@ jobs:
           components: rustfmt
 
       - name: Install taplo-cli
-        uses: cargo install taplo-cli --locked
+        run: cargo install taplo-cli --locked
 
       - name: Report versions
         uses: |

@@ -38,7 +38,7 @@ jobs:
         if: ${{ steps.rustfmt_exists.outputs.rustfmt_config != '' }}
 
       - name: Install taplo-cli
-        uses: cargo install taplo-cli --locked
+        run: cargo install taplo-cli --locked
         if: ${{ steps.rustfmt_exists.outputs.rustfmt_config != '' }}
 
       - name: Assert package edition equals rustfmt editions
