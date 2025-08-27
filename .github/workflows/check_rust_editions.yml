@@ -47,12 +47,12 @@ jobs:
         if: ${{ steps.rustfmt_exists.outputs.rustfmt_config != '' }}
         run: |
           cargo_edition="$(toml2json Cargo.toml | jq -r .package.edition)"
-          rustfmt_edition="$(toml2json ${{ steps.rustfmt_exists.outputs.rustfmt_config }} | jq -r .edition)" || true
+          rustfmt_edition="$( { toml2json ${{ steps.rustfmt_exists.outputs.rustfmt_config }} | jq -r .edition; } 2> /dev/null || true)"
           if [ -n "$rustfmt_edition" ] && [ "$cargo_edition" != "$rustfmt_edition" ]; then
             echo "::error rustfmt.toml edition differs from Cargo.toml edition"
             exit 1
           fi
-          rustfmt_style_edition="$(toml2json ${{ steps.rustfmt_exists.outputs.rustfmt_config }} | jq -r .style_edition)" || true
+          rustfmt_style_edition="$( { toml2json ${{ steps.rustfmt_exists.outputs.rustfmt_config }} | jq -r .style_edition; } 2> /dev/null || true)"
           if [ -n "$rustfmt_style_edition" ] && [ "$cargo_edition" != "$rustfmt_style_edition" ]; then
             echo "::error rustfmt.toml style_edition differs from Cargo.toml edition"
             exit 1
