@@ -5,7 +5,7 @@ repos:
         name: Check formatting of rust manifest with taplo-cli
         entry: taplo fmt --check
         language: system
-        files: [Cargo.toml]
+        files: Cargo.toml
       - id: cargo-check
         name: Cargo check
         entry: cargo check --all-targets
