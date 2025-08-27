@@ -40,6 +40,7 @@ jobs:
       - name: Install toml2json and jq
         run: |
           cargo install --git https://github.com/kkew3/toml2json.git
+          sudo apt-get update
           sudo apt-get install -y jq
         if: ${{ steps.rustfmt_exists.outputs.rustfmt_config != '' }}
 
